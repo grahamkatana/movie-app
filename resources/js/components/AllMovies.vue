@@ -134,7 +134,7 @@
         },
         created() {
             this.axios
-                .get('http://localhost:8000/api/movies')
+                .get('https://movie-katana.herokuapp.com/api/movies')
                 .then(response => {
                     console.log(response.data)
                     this.movies = response.data
@@ -144,7 +144,7 @@
         methods: {
             searchMovie(query) {
                 this.axios
-                    .get(`http://localhost:8000/api/movies/search/${query}`)
+                    .get(`https://movie-katana.herokuapp.com/api/movies/search/${query}`)
                     .then(response => {
                          console.log(response.data)
                          this.movies = response.data;

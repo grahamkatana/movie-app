@@ -2027,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.axios.get('http://localhost:8000/api/movies').then(function (response) {
+    this.axios.get('https://movie-katana.herokuapp.com/api/movies').then(function (response) {
       console.log(response.data);
       _this.movies = response.data;
       _this.temp = response.data;
@@ -2037,7 +2037,7 @@ __webpack_require__.r(__webpack_exports__);
     searchMovie: function searchMovie(query) {
       var _this2 = this;
 
-      this.axios.get("http://localhost:8000/api/movies/search/".concat(query)).then(function (response) {
+      this.axios.get("https://movie-katana.herokuapp.com/api/movies/search/".concat(query)).then(function (response) {
         console.log(response.data);
         _this2.movies = response.data;
         _this2.result = 'Search results...';
@@ -2118,7 +2118,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.axios.get("http://localhost:8000/api/movies/".concat(this.$route.params.id)).then(function (response) {
+    this.axios.get("https://movie-katana.herokuapp.com/api/movies/".concat(this.$route.params.id)).then(function (response) {
       _this.movie = response.data;
       console.log(_this.movie);
     });

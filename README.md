@@ -1,3 +1,7 @@
+![Movie2](https://user-images.githubusercontent.com/68356199/152401742-0c15bf17-5207-44cc-8068-0236023f5a91.JPG)
+![Movie](https://user-images.githubusercontent.com/68356199/152401751-4cf2eee2-2e61-40a4-a15a-300ce376b7bc.JPG)
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

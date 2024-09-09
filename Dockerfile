@@ -12,7 +12,10 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    sudo \
+    nano \
+    htop
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -32,22 +35,29 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
 # Verify Node.js and npm versions
 RUN node -v && npm -v
 
-# Install Laravel dependencies
-COPY composer.json composer.lock ./
-RUN composer install --no-scripts --no-autoloader
-
 # Copy existing application directory contents
 COPY . .
+
+# Install Laravel dependencies
+RUN composer install --no-scripts --no-autoloader
 
 # Generate optimized autoload files
 RUN composer dump-autoload --optimize
 
 # Set correct permissions
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage
+    && chmod -R 755 /var/www/html \
+    && chmod -R 777 /var/www/html/storage
+
+# Create a non-root user and give sudo access (for debugging purposes)
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+
+# Configure PHP-FPM to run as www-data
+RUN sed -i 's/user = www-data/user = www-data/g' /usr/local/etc/php-fpm.d/www.conf \
+    && sed -i 's/group = www-data/group = www-data/g' /usr/local/etc/php-fpm.d/www.conf
 
 # Expose port 9000 for PHP-FPM
 EXPOSE 9000
 
 # Start PHP-FPM
-CMD ["php-fpm"]
+CMD ["php-fpm", "-F"]

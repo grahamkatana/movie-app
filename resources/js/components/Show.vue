@@ -47,7 +47,7 @@
         },
         created() {
             this.axios
-                .get(`https://movie-katana.herokuapp.com/api/movies/${this.$route.params.id}`)
+                .get(`http://127.0.0.1:8000/api/movies/${this.$route.params.id}`)
                 .then((response) => {
                     this.movie = response.data;
                     console.log(this.movie);

@@ -60,4 +60,4 @@ RUN sed -i 's/user = www-data/user = www-data/g' /usr/local/etc/php-fpm.d/www.co
 EXPOSE 9000
 
 # Start PHP-FPM
-CMD ["php-fpm", "-F"]
+CMD ["php-fpm"]
